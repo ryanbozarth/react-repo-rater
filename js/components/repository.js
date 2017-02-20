@@ -4,7 +4,7 @@ import {connect}  from 'react-redux';
 import StarRater from './star-rater';
 import * as actions from '../actions/index';
 
-export default class Repository extends React.Component {
+export class Repository extends React.Component {
     constructor(props) {
         super(props);
         this.changeRating = this.changeRating.bind(this);
