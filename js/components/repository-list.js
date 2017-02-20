@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import Repository from './repository';
+import * as actions from '../actions/index';
 
 export default class RepositoryList extends React.Component {
     constructor(props) {
@@ -9,9 +11,9 @@ export default class RepositoryList extends React.Component {
     }
 
     addRepository() {
-        const repositoryName = this.repositoryNameInput.value;
-        // TODO: Add the repository to the state
-    }
+         const repositoryName = this.repositoryNameInput.value;
+         this.props.dispatch(actions.addRepository(repositoryName));
+     }
 
     render() {
         const repositories = this.props.repositories.map(repository => {
@@ -29,3 +31,9 @@ export default class RepositoryList extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state, props) => ({
+    repositories: state
+});
+
+export default connect(mapStateToProps)(RepositoryList);
